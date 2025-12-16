@@ -1,0 +1,51 @@
+openapi: 3.0.2
+info:
+  title: api-productos
+  version: 1.0.0
+  description: Esta api se encarga de gestionar productos de una base de datos
+  contact:
+    name: Marco Antonio Villanueva Soto
+    email: marcox2304@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0'
+servers:
+  -
+    url: 'http://localhost:8081/api/v1/product'
+    description: ''
+paths:
+  /products:
+    description: ''
+    get:
+      tags:
+        - Products
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+          description: Lista de productos
+      summary: Obtener todos los productos
+      description: Devuelve la lista completa de productos registrados.
+components:
+  schemas:
+    Product:
+      title: Root Type for Product
+      description: Representa un producto dentro del sistema.
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        price:
+          format: double
+          type: number
+      example:
+        id: 1
+        name: Ceviche clásico
+        price: 12.5
